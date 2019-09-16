@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   maesh:
   - apiVersion: v1
+    appVersion: v0.3.0
+    created: "2019-09-16T16:35:07.531457741Z"
+    description: Maesh - Simpler Service Mesh
+    digest: 076419c25f246905f54ef1e62c6d456314bf11861614702fd537b01dc18d4033
+    engine: gotpl
+    home: https://containo.us/
+    icon: https://avatars0.githubusercontent.com/u/16349663?s=200&v=4
+    keywords:
+    - traefik
+    - mesh
+    maintainers:
+    - email: emile@vauge.com
+      name: emilevauge
+    - email: daniel@containo.us
+      name: dtomcej
+    - email: michael@containo.us
+      name: mmatur
+    name: maesh
+    urls:
+    - maesh-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v1
     appVersion: v0.2.1
-    created: "2019-09-16T13:49:57.696003418Z"
+    created: "2019-09-16T16:35:07.530488284Z"
     description: Maesh - Simpler Service Mesh
     digest: 7b5f046932093fee5f210ac5dd2357eaf51c81b3de38e8556d5bb9a6ff8bacc7
     engine: gotpl
@@ -25,7 +47,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: v0.1.0
-    created: "2019-09-16T13:49:57.692334577Z"
+    created: "2019-09-16T16:35:07.527019689Z"
     description: Maesh - Simpler Service Mesh
     digest: 14a1f2c5dc31e7bf6a16579dc07628d6b25968d255f36c1598418722495ca484
     engine: gotpl
@@ -47,7 +69,7 @@ entries:
     version: 0.0.1
   - apiVersion: v1
     appVersion: v0.2.0
-    created: "2019-09-16T13:49:57.694419821Z"
+    created: "2019-09-16T16:35:07.529385526Z"
     description: Maesh - Simpler Service Mesh
     digest: fe4d306f4b3da42416f1999dad8fd4356fab60a1aab78e0f0d5bf6ffc1ae8bfe
     engine: gotpl
@@ -67,4 +89,4 @@ entries:
     urls:
     - maesh-0.0.2.tgz
     version: 0.0.1
-generated: "2019-09-16T13:49:57.689509969Z"
+generated: "2019-09-16T16:35:07.524410892Z"
