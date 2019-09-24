@@ -258,6 +258,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubedns-support" class="md-nav__link">
+    KubeDNS support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation-namespace" class="md-nav__link">
     Installation namespace
   </a>
@@ -329,6 +336,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#kubedns-support" class="md-nav__link">
+    KubeDNS support
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation-namespace" class="md-nav__link">
     Installation namespace
   </a>
@@ -376,6 +390,12 @@ helm repo update</code></pre>
 <p>To deploy the helm chart, run:</p>
 <pre class="highlight"><code class="language-shell">helm install helm/chart/maesh --namespace maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
 
+<h2 id="kubedns-support">KubeDNS support<a class="headerlink" href="#kubedns-support" title="Permanent link">&para;</a></h2>
+<p>Maesh can support KubeDNS</p>
+<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set kubedns=true</code></pre>
+
+<p>With this parameter Maesh will install a CoreDNS as a daemonset.
+KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#example-stub-domain">stubDomains</a></p>
 <h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
 <p>Maesh does not <em>need</em> to be installed into the maesh namespace, 
 but it does need to be installed into its <em>own</em> namespace, separate from user namespaces.</p>
