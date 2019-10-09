@@ -2,8 +2,30 @@ apiVersion: v1
 entries:
   maesh:
   - apiVersion: v1
+    appVersion: v0.5.0
+    created: "2019-10-09T20:51:29.894029875Z"
+    description: Maesh - Simpler Service Mesh
+    digest: 9c55f8d3aeb837c31309fc947862ee0bbb64342116e63b746d0960a74e867cca
+    engine: gotpl
+    home: https://containo.us/
+    icon: https://avatars0.githubusercontent.com/u/16349663?s=200&v=4
+    keywords:
+    - traefik
+    - mesh
+    maintainers:
+    - email: emile@vauge.com
+      name: emilevauge
+    - email: daniel@containo.us
+      name: dtomcej
+    - email: michael@containo.us
+      name: mmatur
+    name: maesh
+    urls:
+    - maesh-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v1
     appVersion: v0.4.0
-    created: "2019-09-17T12:25:37.135913083Z"
+    created: "2019-10-09T20:51:29.892769915Z"
     description: Maesh - Simpler Service Mesh
     digest: 12d970fe9a44d2d732b64cc0aa0065f443ee3ed895189629dcb4568552e9054f
     engine: gotpl
@@ -25,7 +47,7 @@ entries:
     version: 0.0.5
   - apiVersion: v1
     appVersion: v0.3.0
-    created: "2019-09-17T12:25:37.134806543Z"
+    created: "2019-10-09T20:51:29.89123708Z"
     description: Maesh - Simpler Service Mesh
     digest: 076419c25f246905f54ef1e62c6d456314bf11861614702fd537b01dc18d4033
     engine: gotpl
@@ -47,7 +69,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: v0.2.1
-    created: "2019-09-17T12:25:37.133607854Z"
+    created: "2019-10-09T20:51:29.889458604Z"
     description: Maesh - Simpler Service Mesh
     digest: 7b5f046932093fee5f210ac5dd2357eaf51c81b3de38e8556d5bb9a6ff8bacc7
     engine: gotpl
@@ -69,7 +91,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: v0.1.0
-    created: "2019-09-17T12:25:37.129743404Z"
+    created: "2019-10-09T20:51:29.885542701Z"
     description: Maesh - Simpler Service Mesh
     digest: 14a1f2c5dc31e7bf6a16579dc07628d6b25968d255f36c1598418722495ca484
     engine: gotpl
@@ -91,7 +113,7 @@ entries:
     version: 0.0.1
   - apiVersion: v1
     appVersion: v0.2.0
-    created: "2019-09-17T12:25:37.132046986Z"
+    created: "2019-10-09T20:51:29.887930305Z"
     description: Maesh - Simpler Service Mesh
     digest: fe4d306f4b3da42416f1999dad8fd4356fab60a1aab78e0f0d5bf6ffc1ae8bfe
     engine: gotpl
@@ -111,4 +133,4 @@ entries:
     urls:
     - maesh-0.0.2.tgz
     version: 0.0.1
-generated: "2019-09-17T12:25:37.12668273Z"
+generated: "2019-10-09T20:51:29.882911839Z"
