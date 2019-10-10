@@ -278,6 +278,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
         
           <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    Scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#retry" class="md-nav__link">
     Retry
   </a>
@@ -345,6 +352,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <li class="md-nav__item">
   <a href="#traffic-type" class="md-nav__link">
     Traffic type
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheme" class="md-nav__link">
+    Scheme
   </a>
   
 </li>
@@ -419,6 +433,11 @@ and is configured via the values.yaml file in the helm install.</p>
 
 <p>This annotation can be set to either <code>http</code> or <code>tcp</code>, and will specify the mode for that service operation.
 If this annotation is not present, the mesh service will operate in the default mode specified in the static configuration.</p>
+<h3 id="scheme">Scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h3>
+<p>The scheme used to define custom scheme for request:</p>
+<pre class="highlight"><code class="language-yaml">maesh.containo.us/scheme: "h2c"</code></pre>
+
+<p>This annotation can be set to either <code>http</code> or <code>h2c</code> and is available for <code>maesh.containo.us/traffic-type: "http"</code>.</p>
 <h3 id="retry">Retry<a class="headerlink" href="#retry" title="Permanent link">&para;</a></h3>
 <p>Retries can be enabled by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/retry-attempts: "2"</code></pre>
