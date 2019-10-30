@@ -298,6 +298,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rate-limit" class="md-nav__link">
+    Rate Limit
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -377,6 +384,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#rate-limit" class="md-nav__link">
+    Rate Limit
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -452,6 +466,14 @@ Please note that this value is a string, and needs to be quoted.</p>
 The circuit breaker protects your system from stacking requests to unhealthy services (resulting in cascading failures).
 When your system is healthy, the circuit is closed (normal operations). When your system becomes unhealthy, the circuit opens, and requests are no longer forwarded (but handled by a fallback mechanism).</p>
 <p>All configuration options are available <a href="https://docs.traefik.io/v2.0/middlewares/circuitbreaker/#configuration-options">here</a></p>
+<h3 id="rate-limit">Rate Limit<a class="headerlink" href="#rate-limit" title="Permanent link">&para;</a></h3>
+<p>Rate limiting can be enabled by using the following annotations:</p>
+<pre class="highlight"><code class="language-yaml">maesh.containo.us/ratelimit-average: "100"
+maesh.containo.us/ratelimit-burst: "200"</code></pre>
+
+<p>These annotation sets average and burst requests per second limit for the service.
+Please note that this value is a string, and needs to be quoted.</p>
+<p>Further details about the rate limiting can be found <a href="https://docs.traefik.io/v2.0/middlewares/ratelimit/#configuration-options">here</a></p>
                 
                   
                 
