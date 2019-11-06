@@ -279,6 +279,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#verify-your-installation" class="md-nav__link">
+    Verify your installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     Usage
   </a>
@@ -304,6 +311,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li class="md-nav__item">
     <a href="../configuration/" title="Configuration" class="md-nav__link">
       Configuration
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../examples/" title="Examples" class="md-nav__link">
+      Examples
     </a>
   </li>
 
@@ -364,6 +383,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#verify-your-installation" class="md-nav__link">
+    Verify your installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     Usage
   </a>
@@ -416,8 +442,34 @@ KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administe
 helm install --name=maesh --namespace=maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
 
 <h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
-<p>Maesh does not <em>need</em> to be installed into the maesh namespace, 
+<p>Maesh does not <em>need</em> to be installed into the <code>maesh</code> namespace, 
 but it does need to be installed into its <em>own</em> namespace, separate from user namespaces.</p>
+<h2 id="verify-your-installation">Verify your installation<a class="headerlink" href="#verify-your-installation" title="Permanent link">&para;</a></h2>
+<p>You can check that Maesh has been installed properly by running the following command:</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Command</label>
+<div class="superfences-content"><pre class="highlight"><code class="language-bash">kubectl get all -n maesh</code></pre></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">Expected Output</label>
+<div class="superfences-content"><pre class="highlight"><code class="language-text">
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/maesh-controller-676fb86b89-pj8ph   1/1     Running   0          11s
+pod/maesh-mesh-w62z5                    1/1     Running   0          11s
+pod/maesh-mesh-zjlpf                    1/1     Running   0          11s
+
+NAME                     TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/maesh-mesh-api   ClusterIP   100.69.177.254   &lt;none&gt;        8080/TCP   29s
+
+NAME                        DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+daemonset.apps/maesh-mesh   2         2         0       2            0           &lt;none&gt;          29s
+
+NAME                               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/maesh-controller   1         1         1            0           28s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/maesh-controller-676fb86b89   1         1         0       28s</code></pre></div>
+</div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>To use maesh, instead of referencing services via their normal <code>&lt;servicename&gt;.&lt;namespace&gt;</code>, instead use <code>&lt;servicename&gt;.&lt;namespace&gt;.maesh</code>.
 This will access the maesh service mesh, and will allow you to route requests through maesh.</p>
