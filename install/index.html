@@ -279,6 +279,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-recommendations" class="md-nav__link">
+    Platform recommendations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verify-your-installation" class="md-nav__link">
     Verify your installation
   </a>
@@ -395,6 +402,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-recommendations" class="md-nav__link">
+    Platform recommendations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#verify-your-installation" class="md-nav__link">
     Verify your installation
   </a>
@@ -456,6 +470,15 @@ helm install --name=maesh --namespace=maesh maesh/maesh --set clusterDomain=my.c
 <h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
 <p>Maesh does not <em>need</em> to be installed into the <code>maesh</code> namespace, 
 but it does need to be installed into its <em>own</em> namespace, separate from user namespaces.</p>
+<h2 id="platform-recommendations">Platform recommendations<a class="headerlink" href="#platform-recommendations" title="Permanent link">&para;</a></h2>
+<p>Maesh will work on pretty much any kubernetes environment that conforms to the global kubernetes specification.
+That being said, we have had users encounter issues when using variants such as minikube, microk8s,
+and other development distributions.</p>
+<p>Maesh runs without issue on most public clouds (AWS, GKE, Azure, DigitalOcean, and more).
+If you want to run Maesh in development, we would recommend using <a href="https://k3s.io/">k3s</a>, as it is fully conformant.
+We use k3s in Maesh's integration tests, so you can be sure that it works properly.</p>
+<p>If you encounter issues on variants such as minikube or microk8s, please try and reproduce the issue on k3s.
+If you are unable to reproduce, it may be an issue with the distribution behaving differently than official kubernetes.</p>
 <h2 id="verify-your-installation">Verify your installation<a class="headerlink" href="#verify-your-installation" title="Permanent link">&para;</a></h2>
 <p>You can check that Maesh has been installed properly by running the following command:</p>
 <div class="superfences-tabs">
