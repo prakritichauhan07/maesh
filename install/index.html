@@ -272,6 +272,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-mesh-interface" class="md-nav__link">
+    Service Mesh Interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation-namespace" class="md-nav__link">
     Installation namespace
   </a>
@@ -395,6 +402,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-mesh-interface" class="md-nav__link">
+    Service Mesh Interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation-namespace" class="md-nav__link">
     Installation namespace
   </a>
@@ -464,11 +478,20 @@ helm repo update</code></pre>
 KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#example-stub-domain">stubDomains</a></p>
 <h2 id="custom-cluster-domain">Custom cluster domain<a class="headerlink" href="#custom-cluster-domain" title="Permanent link">&para;</a></h2>
 <p>If you use a cluster domain other than <code>cluster.local</code> set it by using the <code>clusterDomain</code> parameter:</p>
-<pre class="highlight"><code class="language-bash">
-helm install --name=maesh --namespace=maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
+<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
 
+<h2 id="service-mesh-interface">Service Mesh Interface<a class="headerlink" href="#service-mesh-interface" title="Permanent link">&para;</a></h2>
+<p>Maesh supports the <a href="https://smi-spec.io/">SMI specification</a> which defines a set of custom resources
+to provide a fine-grained control over instrumentation, routing and access control of east-west communications.</p>
+<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> and <code>smi.deploy</code> helm chart options to true.</p>
+<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set smi.enable=true --set smi.deploy=true`</code></pre>
+
+<ul>
+<li>The <code>smi.enable</code> option makes Maesh process SMI resources.</li>
+<li>The <code>smi.deploy</code> option makes Maesh deploy the SMI CRDs with the helm chart.</li>
+</ul>
 <h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
-<p>Maesh does not <em>need</em> to be installed into the <code>maesh</code> namespace, 
+<p>Maesh does not <em>need</em> to be installed in the <code>maesh</code> namespace,
 but it does need to be installed into its <em>own</em> namespace, separate from user namespaces.</p>
 <h2 id="platform-recommendations">Platform recommendations<a class="headerlink" href="#platform-recommendations" title="Permanent link">&para;</a></h2>
 <p>Maesh will work on pretty much any kubernetes environment that conforms to the global kubernetes specification.
