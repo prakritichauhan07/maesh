@@ -483,12 +483,12 @@ KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administe
 <h2 id="service-mesh-interface">Service Mesh Interface<a class="headerlink" href="#service-mesh-interface" title="Permanent link">&para;</a></h2>
 <p>Maesh supports the <a href="https://smi-spec.io/">SMI specification</a> which defines a set of custom resources
 to provide a fine-grained control over instrumentation, routing and access control of east-west communications.</p>
-<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> and <code>smi.deploy</code> helm chart options to true.</p>
-<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set smi.enable=true --set smi.deploy=true`</code></pre>
+<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> and <code>smi.deploycrds</code> helm chart options to true.</p>
+<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set smi.enable=true --set smi.deploycrds=true`</code></pre>
 
 <ul>
 <li>The <code>smi.enable</code> option makes Maesh process SMI resources.</li>
-<li>The <code>smi.deploy</code> option makes Maesh deploy the SMI CRDs with the helm chart.</li>
+<li>The <code>smi.deploycrds</code> option makes Maesh deploy the SMI CRDs with the helm chart.</li>
 </ul>
 <h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
 <p>Maesh does not <em>need</em> to be installed in the <code>maesh</code> namespace,
