@@ -279,13 +279,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-namespace" class="md-nav__link">
-    Installation namespace
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#platform-recommendations" class="md-nav__link">
     Platform recommendations
   </a>
@@ -409,13 +402,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-namespace" class="md-nav__link">
-    Installation namespace
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#platform-recommendations" class="md-nav__link">
     Platform recommendations
   </a>
@@ -459,7 +445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 helm repo update</code></pre>
 
 <p>Install maesh helm chart:</p>
-<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh</code></pre>
+<pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh</code></pre>
 
 <h2 id="install-from-source">Install from source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h2>
 <p>To build the image locally, run:</p>
@@ -468,31 +454,35 @@ helm repo update</code></pre>
 <p>to build the binary and build/tag the local image.</p>
 <h2 id="deploy-helm-chart">Deploy helm chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h2>
 <p>To deploy the helm chart, run:</p>
-<pre class="highlight"><code class="language-shell">helm install helm/chart/maesh --namespace maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
+<pre class="highlight"><code class="language-shell">helm install maesh helm/chart/maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
 
 <h2 id="kubedns-support">KubeDNS support<a class="headerlink" href="#kubedns-support" title="Permanent link">&para;</a></h2>
 <p>Maesh can support KubeDNS</p>
-<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set kubedns=true</code></pre>
+<pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set kubedns=true</code></pre>
 
 <p>With this parameter Maesh will install a CoreDNS as a daemonset.
 KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#example-stub-domain">stubDomains</a></p>
 <h2 id="custom-cluster-domain">Custom cluster domain<a class="headerlink" href="#custom-cluster-domain" title="Permanent link">&para;</a></h2>
 <p>If you use a cluster domain other than <code>cluster.local</code> set it by using the <code>clusterDomain</code> parameter:</p>
-<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
+<pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
 
 <h2 id="service-mesh-interface">Service Mesh Interface<a class="headerlink" href="#service-mesh-interface" title="Permanent link">&para;</a></h2>
 <p>Maesh supports the <a href="https://smi-spec.io/">SMI specification</a> which defines a set of custom resources
 to provide a fine-grained control over instrumentation, routing and access control of east-west communications.</p>
-<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> and <code>smi.deploycrds</code> helm chart options to true.</p>
-<pre class="highlight"><code class="language-bash">helm install --name=maesh --namespace=maesh maesh/maesh --set smi.enable=true --set smi.deploycrds=true`</code></pre>
+<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> helm chart option to true.</p>
+<pre class="highlight"><code class="language-bash">helm install maesh --namespace=maesh maesh/maesh --set smi.enable=true`</code></pre>
 
 <ul>
 <li>The <code>smi.enable</code> option makes Maesh process SMI resources.</li>
-<li>The <code>smi.deploycrds</code> option makes Maesh deploy the SMI CRDs with the helm chart.</li>
 </ul>
-<h2 id="installation-namespace">Installation namespace<a class="headerlink" href="#installation-namespace" title="Permanent link">&para;</a></h2>
-<p>Maesh does not <em>need</em> to be installed in the <code>maesh</code> namespace,
-but it does need to be installed into its <em>own</em> namespace, separate from user namespaces.</p>
+<div class="admonition note crds">
+<p class="admonition-title">Note</p>
+<p>Helm v3 automatically will install the CRDs in the <code>/crds</code> directory.
+If you are re-installing into a cluster with the CRDs already present, helm may give you a warning.
+If you do not want to install them, or want to avoid the warning during a re-install,
+please use the new <code>--skip-crds</code> flag.
+More informationcan be found on the <a href="https://helm.sh/docs/topics/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">helm documentation</a></p>
+</div>
 <h2 id="platform-recommendations">Platform recommendations<a class="headerlink" href="#platform-recommendations" title="Permanent link">&para;</a></h2>
 <p>Maesh will work on pretty much any kubernetes environment that conforms to the global kubernetes specification.
 That being said, we have had users encounter issues when using variants such as minikube, microk8s,
