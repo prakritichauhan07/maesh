@@ -1,6 +1,6 @@
 var versions = [
-  {path: "master", text: "Experimental", selected: true },
-  {path: "", text: "v1.0 Latest", selected: false },
+  {path: "master", text: "Experimental", selected: false },
+  {path: "", text: "v1.0 Latest", selected: true },
 ];
 
 // Material theme
