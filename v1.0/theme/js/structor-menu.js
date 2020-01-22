@@ -1,5 +1,6 @@
 var versions = [
   {path: "master", text: "Experimental", selected: false },
+  {path: "v1.1", text: "v1.1 (RC)", selected: false },
   {path: "", text: "v1.0 Latest", selected: true },
 ];
 
