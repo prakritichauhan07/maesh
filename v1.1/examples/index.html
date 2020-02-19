@@ -302,6 +302,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#smi-example" class="md-nav__link">
+    SMI Example
+  </a>
+  
+</li>
+      
       
       
       
@@ -348,6 +355,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="md-nav__item">
   <a href="#simple-example" class="md-nav__link">
     Simple Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smi-example" class="md-nav__link">
+    SMI Example
   </a>
   
 </li>
@@ -599,6 +613,61 @@ User-Agent: curl/7.64.0
 Accept: */*
 X-Forwarded-For: 3.4.5.6</code></pre></div>
 </div>
+<h2 id="smi-example">SMI Example<a class="headerlink" href="#smi-example" title="Permanent link">&para;</a></h2>
+<p>In order to expose the HTTP Services from above with SMI enabled, please create the following resources:</p>
+<pre class="highlight"><code class="language-yaml">---
+apiVersion: specs.smi-spec.io/v1alpha1
+kind: HTTPRouteGroup
+metadata:
+  name: http-everything
+  namespace: whoami
+matches:
+- name: everything
+  pathRegex: ".*"
+  methods: ["*"]
+---
+kind: TrafficTarget
+apiVersion: access.smi-spec.io/v1alpha1
+metadata:
+  name: whatever
+  namespace: whoami
+destination:
+  kind: ServiceAccount
+  name: whoami-server
+  namespace: whoami
+  port: "80"
+specs:
+- kind: HTTPRouteGroup
+  name: http-everything
+  matches:
+  - everything
+sources:
+- kind: ServiceAccount
+  name: whoami-client
+  namespace: whoami</code></pre>
+
+<p>For TCP mode, you only need a TCPRoute and a TrafficTarget:</p>
+<pre class="highlight"><code class="language-yaml">kind: TrafficTarget
+apiVersion: access.smi-spec.io/v1alpha1
+metadata:
+  name: api-service-target
+  namespace: default
+destination:
+  kind: ServiceAccount
+  name: api-service
+  namespace: default
+specs:
+- kind: TCPRoute
+  name: my-tcp-route
+sources:
+- kind: ServiceAccount
+  name: my-other-service
+  namespace: default
+---
+apiVersion: specs.smi-spec.io/v1alpha1
+kind: TCPRoute
+metadata:
+  name: my-tcp-route</code></pre>
                 
                   
                 
