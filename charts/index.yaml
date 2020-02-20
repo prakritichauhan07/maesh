@@ -2,8 +2,38 @@ apiVersion: v1
 entries:
   maesh:
   - apiVersion: v2
+    appVersion: v1.1.0-rc2
+    created: "2020-02-20T15:57:10.20958974Z"
+    dependencies:
+    - condition: tracing.deploy
+      name: tracing
+      repository: ""
+      version: 0.0.3
+    - condition: metrics.deploy
+      name: metrics
+      repository: ""
+      version: 0.0.6
+    description: Maesh - Simpler Service Mesh
+    digest: cdbd5f2b2f448f33fa6203d1ff6f55703b5afb47d8cc6830e19c9c9b98fd3ec6
+    home: https://containo.us/
+    icon: https://avatars0.githubusercontent.com/u/16349663?s=200&v=4
+    keywords:
+    - traefik
+    - mesh
+    maintainers:
+    - email: emile@vauge.com
+      name: emilevauge
+    - email: daniel@containo.us
+      name: dtomcej
+    - email: michael@containo.us
+      name: mmatur
+    name: maesh
+    urls:
+    - maesh-1.1.0-rc2.tgz
+    version: 1.1.0-rc2
+  - apiVersion: v2
     appVersion: v1.1.0-rc1
-    created: "2020-01-22T16:00:34.8508024Z"
+    created: "2020-02-20T15:57:10.206162499Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -33,7 +63,7 @@ entries:
     version: 1.1.0-rc1
   - apiVersion: v1
     appVersion: v1.0.0
-    created: "2020-01-22T16:00:34.849485011Z"
+    created: "2020-02-20T15:57:10.202365188Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -63,7 +93,7 @@ entries:
     version: 1.0.0
   - apiVersion: v1
     appVersion: v0.8.0
-    created: "2020-01-22T16:00:34.848146708Z"
+    created: "2020-02-20T15:57:10.199061014Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -93,7 +123,7 @@ entries:
     version: 0.0.9
   - apiVersion: v1
     appVersion: v0.7.0
-    created: "2020-01-22T16:00:34.846928675Z"
+    created: "2020-02-20T15:57:10.196587444Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -123,7 +153,7 @@ entries:
     version: 0.0.8
   - apiVersion: v1
     appVersion: v0.6.0
-    created: "2020-01-22T16:00:34.845498836Z"
+    created: "2020-02-20T15:57:10.195304304Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -153,7 +183,7 @@ entries:
     version: 0.0.7
   - apiVersion: v1
     appVersion: v0.5.0
-    created: "2020-01-22T16:00:34.844173108Z"
+    created: "2020-02-20T15:57:10.193911521Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -183,7 +213,7 @@ entries:
     version: 0.0.6
   - apiVersion: v1
     appVersion: v0.4.0
-    created: "2020-01-22T16:00:34.839917614Z"
+    created: "2020-02-20T15:57:10.190469044Z"
     dependencies:
     - condition: tracing.deploy
       name: tracing
@@ -213,7 +243,7 @@ entries:
     version: 0.0.5
   - apiVersion: v1
     appVersion: v0.3.0
-    created: "2020-01-22T16:00:34.823297288Z"
+    created: "2020-02-20T15:57:10.187210716Z"
     dependencies:
     - condition: tracing.enabled
       name: tracing
@@ -243,7 +273,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: v0.2.1
-    created: "2020-01-22T16:00:34.821326719Z"
+    created: "2020-02-20T15:57:10.184178416Z"
     dependencies:
     - condition: tracing.enabled
       name: tracing
@@ -273,7 +303,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: v0.1.0
-    created: "2020-01-22T16:00:34.81489093Z"
+    created: "2020-02-20T15:57:10.179833572Z"
     dependencies:
     - condition: tracing.enabled
       name: tracing
@@ -303,7 +333,7 @@ entries:
     version: 0.0.1
   - apiVersion: v1
     appVersion: v0.2.0
-    created: "2020-01-22T16:00:34.818210811Z"
+    created: "2020-02-20T15:57:10.181291864Z"
     dependencies:
     - condition: tracing.enabled
       name: tracing
@@ -331,4 +361,4 @@ entries:
     urls:
     - maesh-0.0.2.tgz
     version: 0.0.1
-generated: "2020-01-22T16:00:34.810578684Z"
+generated: "2020-02-20T15:57:10.17252997Z"
