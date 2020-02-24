@@ -652,6 +652,8 @@ matches:
 </ul>
 <p>Other types of route groups and detailed information are available <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-specs.md">in the specification</a>.</p>
 <p>By default, all traffic is denied so we need to grant access to clients to our application. This is done by defining a <code>TrafficTarget</code>.</p>
+<details class="note"><summary>TrafficTarget Source &amp; Destination</summary><p>Please note that TrafficTarget is a namespaced resource. Therefore, the source and the destination namespace needs to be explicitly defined.</p>
+</details>
 <pre class="highlight"><code class="language-yaml">---
 apiVersion: access.smi-spec.io/v1alpha1
 kind: TrafficTarget
