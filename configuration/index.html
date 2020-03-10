@@ -558,7 +558,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="/edit/v1.0/docs/content/configuration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="/edit/v1.1/docs/content/configuration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
                 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
@@ -601,7 +601,10 @@ If this annotation is not present, the mesh service will operate in the default 
 <p>The scheme used to define custom scheme for request:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/scheme: "h2c"</code></pre>
 
-<p>This annotation can be set to either <code>http</code> or <code>h2c</code> and is available for <code>maesh.containo.us/traffic-type: "http"</code>.</p>
+<p>This annotation can be set to either <code>http</code>, <code>https</code> or <code>h2c</code> and is available for <code>maesh.containo.us/traffic-type: "http"</code>.</p>
+<details class="note"><summary>Limitations</summary><p>Please keep in mind, that if you set the scheme to <code>https</code> your service needs to expose itself via HTTPS as there is no
+mTLS in Maesh.</p>
+</details>
 <h4 id="retry">Retry<a class="headerlink" href="#retry" title="Permanent link">&para;</a></h4>
 <p>Retries can be enabled by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/retry-attempts: "2"</code></pre>
@@ -649,6 +652,8 @@ matches:
 </ul>
 <p>Other types of route groups and detailed information are available <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-specs.md">in the specification</a>.</p>
 <p>By default, all traffic is denied so we need to grant access to clients to our application. This is done by defining a <code>TrafficTarget</code>.</p>
+<details class="note"><summary>TrafficTarget Source &amp; Destination</summary><p>Please note that TrafficTarget is a namespaced resource. Therefore, the source and the destination namespace needs to be explicitly defined.</p>
+</details>
 <pre class="highlight"><code class="language-yaml">---
 apiVersion: access.smi-spec.io/v1alpha1
 kind: TrafficTarget
