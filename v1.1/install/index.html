@@ -483,7 +483,7 @@ helm repo update</code></pre>
 
 <p>to build the binary and build/tag the local image.</p>
 <h2 id="deploy-helm-chart">Deploy helm chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Helm V3</summary><p>Please keep in mind, that our current Helm Chart (v1.0.0) is v2 compatible only. The v3 compatible Chart will be released with v1.1 of Maesh.</p>
+<details class="note"><summary>Helm V3</summary><p>Please keep in mind, that the helm chart is v3 compatible only, and will not function properly with helm v2.</p>
 </details>
 <p>To deploy the helm chart, run:</p>
 <pre class="highlight"><code class="language-shell">helm install maesh helm/chart/maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
