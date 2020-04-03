@@ -584,7 +584,7 @@ and is configured via the values.yaml file in the helm install.</p>
 <p>Service Mesh Interface (SMI) mode can be enabled.
     This configures maesh to run in SMI mode, where access and routes are explicitly enabled.
     Note: By default, all routes and access is denied.
-    Please see the <a href="https://github.com/deislabs/smi-spec">SMI Specification</a> for more information</p>
+    Please see the <a href="https://github.com/servicemeshinterface/smi-spec">SMI Specification</a> for more information</p>
 </li>
 </ul>
 <h2 id="dynamic-configuration">Dynamic configuration<a class="headerlink" href="#dynamic-configuration" title="Permanent link">&para;</a></h2>
@@ -650,7 +650,7 @@ matches:
 <li>The <code>api</code> route under the <code>/api</code> path, accepting all methods</li>
 <li>The <code>metrics</code> routes under the <code>/metrics</code> path, accepting only <code>GET</code> requests</li>
 </ul>
-<p>Other types of route groups and detailed information are available <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-specs.md">in the specification</a>.</p>
+<p>Other types of route groups and detailed information are available <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-specs.md">in the specification</a>.</p>
 <p>By default, all traffic is denied so we need to grant access to clients to our application. This is done by defining a <code>TrafficTarget</code>.</p>
 <details class="note"><summary>TrafficTarget Source &amp; Destination</summary><p>Please note that TrafficTarget is a namespaced resource. Therefore, the source and the destination namespace needs to be explicitly defined.</p>
 </details>
@@ -676,7 +676,7 @@ sources:
 
 <p>In this example, we grant access to all pods running with the service account <code>client</code> under the namespace <code>client</code> to the HTTP route <code>api</code> specified by on the group <code>server-routes</code> on all pods running with the service account <code>server</code> under the namespace <code>server</code>.</p>
 <p>Any client running with the service account <code>client</code> under the <code>client</code> namespace accessing <code>server.server.maesh/api</code> is allowed to access the <code>/api</code> resource. Others will receive 404 answers from the Maesh node.</p>
-<p>More information can be found <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-access-control.md">in the SMI specification</a>.</p>
+<p>More information can be found <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md">in the SMI specification</a>.</p>
 <h4 id="traffic-splitting">Traffic Splitting<a class="headerlink" href="#traffic-splitting" title="Permanent link">&para;</a></h4>
 <p>SMI defines the <code>TrafficSplit</code> resource which allows to direct subsets of the traffic to different services.</p>
 <pre class="highlight"><code class="language-yaml">apiVersion: split.smi-spec.io/v1alpha1
@@ -694,9 +694,9 @@ spec:
 
 <p>In this example, we define a traffic split for our server service between two versions of our server, v1 and v2.
 <code>server.server.maesh</code> directs 80% of the traffic to the server-v1 pods, and 20% of the traffic to the server-v2 pods.</p>
-<p>More information can be found <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-split.md">in the SMI specification</a>.</p>
+<p>More information can be found <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-split.md">in the SMI specification</a>.</p>
 <h4 id="traffic-metrics">Traffic Metrics<a class="headerlink" href="#traffic-metrics" title="Permanent link">&para;</a></h4>
-<p>At the moment, Maesh does not implement the <a href="https://github.com/deislabs/smi-spec/blob/master/traffic-metrics.md">Traffic Metrics specification</a>.</p>
+<p>At the moment, Maesh does not implement the <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-metrics.md">Traffic Metrics specification</a>.</p>
                 
                   
                 
