@@ -562,13 +562,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
                 
                 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
-<p>The configuration for maesh is broken down into two parts: the static configuration, and the dynamic configuration.
-The static configuration is configured when the maesh service mesh is installed,
-and is configured via the values.yaml file in the helm install.</p>
+<p>The configuration for Maesh is broken down into two parts: the static configuration, and the dynamic configuration.
+The static configuration is configured when the Maesh service mesh is installed, and is configured via the values.yaml file in the helm install.</p>
 <h2 id="static-configuration">Static configuration<a class="headerlink" href="#static-configuration" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>The maesh image version can be manually defined if needed, as can the version for the Traefik CE mesh nodes.</p>
+<p>The Maesh image version can be manually defined if needed, as can the version for the Traefik mesh nodes.</p>
 </li>
 <li>
 <p>Debug logging can be globally enabled.</p>
@@ -582,16 +581,16 @@ and is configured via the values.yaml file in the helm install.</p>
 </li>
 <li>
 <p>Service Mesh Interface (SMI) mode can be enabled.
-    This configures maesh to run in SMI mode, where access and routes are explicitly enabled.
-    Note: By default, all routes and access is denied.
-    Please see the <a href="https://github.com/servicemeshinterface/smi-spec">SMI Specification</a> for more information</p>
+    This configures Maesh to run in SMI mode, where access and routes are explicitly enabled.
+    Note: By default, all routes and access are denied.
+    Please see the <a href="https://github.com/servicemeshinterface/smi-spec">SMI Specification</a> for more information.</p>
 </li>
 </ul>
 <h2 id="dynamic-configuration">Dynamic configuration<a class="headerlink" href="#dynamic-configuration" title="Permanent link">&para;</a></h2>
 <p>Dynamic configuration can be provided to Maesh using either annotations on kubernetes services (default mode) or SMI resources if Maesh is installed with <a href="../install/#service-mesh-interface">SMI enabled</a>.</p>
 <h3 id="with-kubernetes-services">With Kubernetes Services<a class="headerlink" href="#with-kubernetes-services" title="Permanent link">&para;</a></h3>
 <h4 id="traffic-type">Traffic type<a class="headerlink" href="#traffic-type" title="Permanent link">&para;</a></h4>
-<p>Annotations on services are the main way to configure maesh behavior.</p>
+<p>Annotations on services are the main way to configure Maesh behavior.</p>
 <p>The service mode can be enabled by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/traffic-type: "http"</code></pre>
 
@@ -609,7 +608,7 @@ mTLS in Maesh.</p>
 <p>Retries can be enabled by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/retry-attempts: "2"</code></pre>
 
-<p>This annotation sets the number of retry attempts that maesh will make if a network error occurrs.
+<p>This annotation sets the number of retry attempts that Maesh will make if a network error occurs.
 Please note that this value is a string, and needs to be quoted.</p>
 <h4 id="circuit-breaker">Circuit breaker<a class="headerlink" href="#circuit-breaker" title="Permanent link">&para;</a></h4>
 <p>Circuit breaker can be enabled by using the following annotation:</p>
@@ -618,7 +617,7 @@ Please note that this value is a string, and needs to be quoted.</p>
 <p>This annotation sets the expression for circuit breaking.
 The circuit breaker protects your system from stacking requests to unhealthy services (resulting in cascading failures).
 When your system is healthy, the circuit is closed (normal operations). When your system becomes unhealthy, the circuit opens, and requests are no longer forwarded (but handled by a fallback mechanism).</p>
-<p>All configuration options are available <a href="https://docs.traefik.io/v2.0/middlewares/circuitbreaker/#configuration-options">here</a></p>
+<p>All configuration options are available <a href="https://docs.traefik.io/v2.0/middlewares/circuitbreaker/#configuration-options">here</a>.</p>
 <h4 id="rate-limit">Rate Limit<a class="headerlink" href="#rate-limit" title="Permanent link">&para;</a></h4>
 <p>Rate limiting can be enabled by using the following annotations:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/ratelimit-average: "100"
@@ -626,7 +625,7 @@ maesh.containo.us/ratelimit-burst: "200"</code></pre>
 
 <p>These annotation sets average and burst requests per second limit for the service.
 Please note that this value is a string, and needs to be quoted.</p>
-<p>Further details about the rate limiting can be found <a href="https://docs.traefik.io/v2.0/middlewares/ratelimit/#configuration-options">here</a></p>
+<p>Further details about the rate limiting can be found <a href="https://docs.traefik.io/v2.0/middlewares/ratelimit/#configuration-options">here</a>.</p>
 <h3 id="with-service-mesh-interface">With Service Mesh Interface<a class="headerlink" href="#with-service-mesh-interface" title="Permanent link">&para;</a></h3>
 <h4 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h4>
 <p>The first step is to describe what the traffic of our server application looks like.</p>
@@ -647,8 +646,8 @@ matches:
 <p>In this example, we define a set of HTTP routes for our <code>server</code> application.</p>
 <p>More precisely, the <code>server</code> app is composed by two routes:</p>
 <ul>
-<li>The <code>api</code> route under the <code>/api</code> path, accepting all methods</li>
-<li>The <code>metrics</code> routes under the <code>/metrics</code> path, accepting only <code>GET</code> requests</li>
+<li>The <code>api</code> route under the <code>/api</code> path, accepting all methods.</li>
+<li>The <code>metrics</code> routes under the <code>/metrics</code> path, accepting only <code>GET</code> requests.</li>
 </ul>
 <p>Other types of route groups and detailed information are available <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-specs.md">in the specification</a>.</p>
 <p>By default, all traffic is denied so we need to grant access to clients to our application. This is done by defining a <code>TrafficTarget</code>.</p>

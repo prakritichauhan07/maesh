@@ -276,12 +276,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     Install from source
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#deploy-helm-chart" class="md-nav__link">
     Deploy helm chart
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -399,12 +405,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     Install from source
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#deploy-helm-chart" class="md-nav__link">
     Deploy helm chart
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -470,11 +482,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
                 
                 <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<p>To install maesh, the installation method is quite simple:</p>
+<p>To install Maesh, the installation method is quite simple:</p>
 <pre class="highlight"><code class="language-bash">helm repo add maesh https://containous.github.io/maesh/charts
 helm repo update</code></pre>
 
-<p>Install maesh helm chart:</p>
+<p>Install Maesh helm chart:</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh</code></pre>
 
 <h2 id="install-from-source">Install from source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h2>
@@ -482,21 +494,20 @@ helm repo update</code></pre>
 <p class="admonition-title">Note</p>
 <p>Please be aware that the supported installation method is via Helm, using official releases.
 If you want to build/install/run Maesh from source, we may not be able to provide support.
-Installing from source is intended for development/contributing .</p>
+Installing from source is intended for development/contributing.</p>
 </div>
 <p>To build the image locally, run:</p>
 <pre class="highlight"><code class="language-shell">make</code></pre>
 
-<p>to build the binary and build/tag the local image.
-You will then be able to use the tagged image as your image in your <code>values.yaml</code> file.</p>
-<h2 id="deploy-helm-chart">Deploy helm chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h2>
-<details class="note"><summary>Helm V3</summary><p>Please keep in mind, that our current Helm Chart (v1.0.0) is v2 compatible only. The v3 compatible Chart will be released with v1.1 of Maesh.</p>
+<p>You will then be able to use the tagged image as your image in your <code>values.yaml</code> file.</p>
+<h3 id="deploy-helm-chart">Deploy helm chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h3>
+<details class="note"><summary>Helm V3</summary><p>Please keep in mind, that our current Helm Chart (v1.1.0) is v3 compatible only.</p>
 </details>
 <p>To deploy the helm chart, run:</p>
 <pre class="highlight"><code class="language-shell">helm install maesh helm/chart/maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
 
 <h2 id="kubedns-support">KubeDNS support<a class="headerlink" href="#kubedns-support" title="Permanent link">&para;</a></h2>
-<p>Maesh can support KubeDNS</p>
+<p>Maesh can support KubeDNS:</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set kubedns=true</code></pre>
 
 <p>With this parameter Maesh will install a CoreDNS as a daemonset.
@@ -520,7 +531,7 @@ to provide a fine-grained control over instrumentation, routing and access contr
 If you are re-installing into a cluster with the CRDs already present, helm may give you a warning.
 If you do not want to install them, or want to avoid the warning during a re-install,
 please use the new <code>--skip-crds</code> flag.
-More informationcan be found on the <a href="https://helm.sh/docs/topics/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">helm documentation</a></p>
+More information can be found on the <a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">helm documentation</a>.</p>
 </div>
 <h2 id="platform-recommendations">Platform recommendations<a class="headerlink" href="#platform-recommendations" title="Permanent link">&para;</a></h2>
 <p>Maesh will work on pretty much any kubernetes environment that conforms to the global kubernetes specification.
@@ -558,9 +569,9 @@ NAME                                          DESIRED   CURRENT   READY   AGE
 replicaset.apps/maesh-controller-676fb86b89   1         1         0       28s</code></pre></div>
 </div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>To use maesh, instead of referencing services via their normal <code>&lt;servicename&gt;.&lt;namespace&gt;</code>, instead use <code>&lt;servicename&gt;.&lt;namespace&gt;.maesh</code>.
-This will access the maesh service mesh, and will allow you to route requests through maesh.</p>
-<p>By default, maesh is opt-in, meaning you have to use the maesh service names to access the mesh, so you can have some services running through the mesh, and some services not.</p>
+<p>To use Maesh, instead of referencing services via their normal <code>&lt;servicename&gt;.&lt;namespace&gt;</code>, instead use <code>&lt;servicename&gt;.&lt;namespace&gt;.maesh</code>.
+This will access the Maesh service mesh, and will allow you to route requests through Maesh.</p>
+<p>By default, Maesh is opt-in, meaning you have to use the Maesh service names to access the mesh, so you can have some services running through the mesh, and some services not.</p>
                 
                   
                 
