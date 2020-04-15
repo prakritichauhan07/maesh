@@ -281,7 +281,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
           <li class="md-nav__item">
   <a href="#deploy-helm-chart" class="md-nav__link">
-    Deploy helm chart
+    Deploy Helm Chart
   </a>
   
 </li>
@@ -306,8 +306,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-mesh-interface" class="md-nav__link">
-    Service Mesh Interface
+  <a href="#access-control-list" class="md-nav__link">
+    Access Control List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smi-mode-deprecated" class="md-nav__link">
+    SMI Mode (Deprecated)
   </a>
   
 </li>
@@ -506,7 +513,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
           <li class="md-nav__item">
   <a href="#deploy-helm-chart" class="md-nav__link">
-    Deploy helm chart
+    Deploy Helm Chart
   </a>
   
 </li>
@@ -531,8 +538,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-mesh-interface" class="md-nav__link">
-    Service Mesh Interface
+  <a href="#access-control-list" class="md-nav__link">
+    Access Control List
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#smi-mode-deprecated" class="md-nav__link">
+    SMI Mode (Deprecated)
   </a>
   
 </li>
@@ -582,7 +596,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <pre class="highlight"><code class="language-bash">helm repo add maesh https://containous.github.io/maesh/charts
 helm repo update</code></pre>
 
-<p>Install Maesh helm chart:</p>
+<p>Install Maesh Helm Chart:</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh</code></pre>
 
 <h2 id="install-from-source">Install from source<a class="headerlink" href="#install-from-source" title="Permanent link">&para;</a></h2>
@@ -596,10 +610,10 @@ Installing from source is intended for development/contributing.</p>
 <pre class="highlight"><code class="language-shell">make</code></pre>
 
 <p>You will then be able to use the tagged image as your image in your <code>values.yaml</code> file.</p>
-<h3 id="deploy-helm-chart">Deploy helm chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h3>
+<h3 id="deploy-helm-chart">Deploy Helm Chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h3>
 <details class="note"><summary>Helm V3</summary><p>Please keep in mind, that our current Helm Chart (v1.1.0) is v3 compatible only.</p>
 </details>
-<p>To deploy the helm chart, run:</p>
+<p>To deploy the Helm Chart, run:</p>
 <pre class="highlight"><code class="language-shell">helm install maesh helm/chart/maesh --set controller.image.pullPolicy=IfNotPresent --set controller.image.tag=latest</code></pre>
 
 <h2 id="kubedns-support">KubeDNS support<a class="headerlink" href="#kubedns-support" title="Permanent link">&para;</a></h2>
@@ -612,32 +626,39 @@ KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administe
 <p>If you use a cluster domain other than <code>cluster.local</code> set it by using the <code>clusterDomain</code> parameter:</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
 
-<h2 id="service-mesh-interface">Service Mesh Interface<a class="headerlink" href="#service-mesh-interface" title="Permanent link">&para;</a></h2>
+<h2 id="access-control-list">Access Control List<a class="headerlink" href="#access-control-list" title="Permanent link">&para;</a></h2>
+<p>By default, Maesh does not restrict traffic between pods and services. However, some scenarios require more control
+over the rules for internal communication. The Access Control List mode (ACL) requires a set of rules to explicitly allow 
+traffic between different resources.</p>
+<p>To enable ACL, install Maesh in ACL mode by setting the <code>acl</code> Helm Chart option to <code>true</code>.</p>
+<pre class="highlight"><code class="language-bash">helm install maesh --namespace=maesh maesh/maesh --set acl=true</code></pre>
+
 <p>Maesh supports the <a href="https://smi-spec.io/">SMI specification</a> which defines a set of custom resources
 to provide a fine-grained control over instrumentation, routing and access control of east-west communications.</p>
-<p>To enable SMI, install maesh in SMI mode by setting the <code>smi.enable</code> helm chart option to true.</p>
-<pre class="highlight"><code class="language-bash">helm install maesh --namespace=maesh maesh/maesh --set smi.enable=true`</code></pre>
-
-<ul>
-<li>The <code>smi.enable</code> option makes Maesh process SMI resources.</li>
-</ul>
 <div class="admonition note crds">
 <p class="admonition-title">Note</p>
 <p>Helm v3 automatically will install the CRDs in the <code>/crds</code> directory.
-If you are re-installing into a cluster with the CRDs already present, helm may give you a warning.
+If you are re-installing into a cluster with the CRDs already present, Helm may print a warning.
 If you do not want to install them, or want to avoid the warning during a re-install,
 please use the new <code>--skip-crds</code> flag.
 More information can be found on the <a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">helm documentation</a>.</p>
 </div>
+<h2 id="smi-mode-deprecated">SMI Mode (Deprecated)<a class="headerlink" href="#smi-mode-deprecated" title="Permanent link">&para;</a></h2>
+<p>Maesh supports the SMI specification which defines a set of custom resources to provide a fine-grained control over instrumentation, routing and access control of east-west communications.</p>
+<p>To enable SMI, install maesh in SMI mode by setting the smi.enable helm chart option to true.</p>
+<pre class="highlight"><code class="language-bash">helm install maesh --namespace=maesh maesh/maesh --set smi.enable=true`</code></pre>
+
+<p>The smi.enable option makes Maesh process SMI resources.</p>
+<p>!!! Note This option is deprecated. Please consider using <code>--acl</code> instead.</p>
 <h2 id="platform-recommendations">Platform recommendations<a class="headerlink" href="#platform-recommendations" title="Permanent link">&para;</a></h2>
-<p>Maesh will work on pretty much any kubernetes environment that conforms to the global kubernetes specification.
+<p>Maesh works on Kubernetes environments that conforms to the global Kubernetes specification.
 That being said, we have had users encounter issues when using variants such as minikube, microk8s,
 and other development distributions.</p>
 <p>Maesh runs without issue on most public clouds (AWS, GKE, Azure, DigitalOcean, and more).
 If you want to run Maesh in development, we would recommend using <a href="https://k3s.io/">k3s</a>, as it is fully conformant.
 We use k3s in Maesh's integration tests, so you can be sure that it works properly.</p>
 <p>If you encounter issues on variants such as minikube or microk8s, please try and reproduce the issue on k3s.
-If you are unable to reproduce, it may be an issue with the distribution behaving differently than official kubernetes.</p>
+If you are unable to reproduce, it may be an issue with the distribution behaving differently than official Kubernetes.</p>
 <h2 id="verify-your-installation">Verify your installation<a class="headerlink" href="#verify-your-installation" title="Permanent link">&para;</a></h2>
 <p>You can check that Maesh has been installed properly by running the following command:</p>
 <div class="superfences-tabs">

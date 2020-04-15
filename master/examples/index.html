@@ -303,8 +303,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#smi-example" class="md-nav__link">
-    SMI Example
+  <a href="#acl-example" class="md-nav__link">
+    ACL Example
   </a>
   
 </li>
@@ -456,8 +456,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
       
         <li class="md-nav__item">
-  <a href="#smi-example" class="md-nav__link">
-    SMI Example
+  <a href="#acl-example" class="md-nav__link">
+    ACL Example
   </a>
   
 </li>
@@ -490,8 +490,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">namespace.yaml</label>
-<div class="superfences-content"><pre class="highlight"><code class="language-yaml">---
-apiVersion: v1
+<div class="superfences-content"><pre class="highlight"><code class="language-yaml">apiVersion: v1
 kind: Namespace
 metadata:
   name: whoami
@@ -652,8 +651,7 @@ my data</code></pre></div>
 <p>Since Maesh is not intrusive, it has to be explicitly given access to services before it can be used. You can ensure that the HTTP endpoint of your service does not pass through Maesh since no <code>X-Forwarded-For</code> header should be added.</p>
 <p>Now, in order to configure Maesh for your <code>whoami</code> service, you just need to update the <code>whoami</code> service specs, in order to add the appropriate annotations.</p>
 <p>The HTTP service needs to have <code>maesh.containo.us/traffic-type: "http"</code> and the TCP service, <code>maesh.containo.us/traffic-type: "tcp"</code>.</p>
-<pre class="highlight"><code class="language-yaml">---
-apiVersion: v1
+<pre class="highlight"><code class="language-yaml">apiVersion: v1
 kind: Service
 metadata:
   name: whoami
@@ -709,10 +707,13 @@ User-Agent: curl/7.64.0
 Accept: */*
 X-Forwarded-For: 3.4.5.6</code></pre></div>
 </div>
-<h2 id="smi-example">SMI Example<a class="headerlink" href="#smi-example" title="Permanent link">&para;</a></h2>
-<p>In order to expose the HTTP Services from above with SMI enabled, please create the following resources:</p>
-<pre class="highlight"><code class="language-yaml">---
-apiVersion: specs.smi-spec.io/v1alpha1
+<h2 id="acl-example">ACL Example<a class="headerlink" href="#acl-example" title="Permanent link">&para;</a></h2>
+<p>The <a href="../install/#access-control-list">ACL mode</a> can be enabled when installing Maesh. Once activated, all traffic is forbidden unless explicitly authorized
+using the SMI <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md#traffictarget-v1alpha1">TrafficTarget</a> resource. This example will present the configuration required to allow the client
+pod to send traffic to the HTTP and TCP services defined in the previous example.</p>
+<p>Each <code>TrafficTarget</code> defines that a set of source <code>ServiceAccount</code> is capable of sending traffic to a destination <code>ServiceAccount</code>. To authorize the <code>whoami-client</code> pod to send traffic to <code>whoami.whoami.maesh</code>, we need to
+explicitly allow it to hit the pods exposed by the <code>whoami</code> service. </p>
+<pre class="highlight"><code class="language-yaml">apiVersion: specs.smi-spec.io/v1alpha1
 kind: HTTPRouteGroup
 metadata:
   name: http-everything
@@ -742,7 +743,7 @@ sources:
   name: whoami-client
   namespace: whoami</code></pre>
 
-<p>For TCP mode, you only need a TCPRoute and a TrafficTarget:</p>
+<p>Incoming traffic on a TCP service can also be authorized using a <code>TrafficTarget</code> and a <code>TCPRoute</code>.</p>
 <pre class="highlight"><code class="language-yaml">kind: TrafficTarget
 apiVersion: access.smi-spec.io/v1alpha1
 metadata:

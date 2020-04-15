@@ -299,8 +299,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#with-kubernetes-services" class="md-nav__link">
-    With Kubernetes Services
+  <a href="#kubernetes-service-annotations" class="md-nav__link">
+    Kubernetes Service Annotations
   </a>
   
     <nav class="md-nav">
@@ -347,8 +347,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-service-mesh-interface" class="md-nav__link">
-    With Service Mesh Interface
+  <a href="#service-mesh-interface" class="md-nav__link">
+    Service Mesh Interface
   </a>
   
     <nav class="md-nav">
@@ -552,8 +552,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#with-kubernetes-services" class="md-nav__link">
-    With Kubernetes Services
+  <a href="#kubernetes-service-annotations" class="md-nav__link">
+    Kubernetes Service Annotations
   </a>
   
     <nav class="md-nav">
@@ -600,8 +600,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </li>
         
           <li class="md-nav__item">
-  <a href="#with-service-mesh-interface" class="md-nav__link">
-    With Service Mesh Interface
+  <a href="#service-mesh-interface" class="md-nav__link">
+    Service Mesh Interface
   </a>
   
     <nav class="md-nav">
@@ -659,7 +659,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
                 <h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h1>
 <p>The configuration for Maesh is broken down into two parts: the static configuration, and the dynamic configuration.
-The static configuration is configured when the Maesh service mesh is installed, and is configured via the values.yaml file in the helm install.</p>
+The static configuration is configured when the service mesh is installed and is configured via the <code>values.yaml</code> file in the Helm install.</p>
 <h2 id="static-configuration">Static configuration<a class="headerlink" href="#static-configuration" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -676,18 +676,64 @@ The static configuration is configured when the Maesh service mesh is installed,
 <p>Tracing can be enabled.</p>
 </li>
 <li>
-<p>Service Mesh Interface (SMI) mode can be enabled.
-    This configures Maesh to run in SMI mode, where access and routes are explicitly enabled.
-    Note: By default, all routes and access are denied.
-    Please see the <a href="https://github.com/servicemeshinterface/smi-spec">SMI Specification</a> for more information.</p>
+<p>Access-Control List (ACL) mode can be enabled.
+    This configures Maesh to run in ACL mode, where all traffic is forbidden unless explicitly allowed via 
+    an SMI <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md">TrafficTarget</a>.
+    Please see the <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md">SMI Specification</a> for more information.</p>
 </li>
 </ul>
 <h2 id="dynamic-configuration">Dynamic configuration<a class="headerlink" href="#dynamic-configuration" title="Permanent link">&para;</a></h2>
-<p>Dynamic configuration can be provided to Maesh using either annotations on kubernetes services (default mode) or SMI resources if Maesh is installed with <a href="../install/#service-mesh-interface">SMI enabled</a>.</p>
-<h3 id="with-kubernetes-services">With Kubernetes Services<a class="headerlink" href="#with-kubernetes-services" title="Permanent link">&para;</a></h3>
+<p>Dynamic configuration can be provided to Maesh using annotations on Kubernetes services and via SMI objects. </p>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>ACL disabled</th>
+<th>ACL enabled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Traffic-Type</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Scheme</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Retry</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Circuit-Breaker</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Rate-Limit</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Traffic-Split (SMI)</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Traffic-Target (SMI)</td>
+<td>✘</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kubernetes-service-annotations">Kubernetes Service Annotations<a class="headerlink" href="#kubernetes-service-annotations" title="Permanent link">&para;</a></h3>
+<p>Annotations on services give the ability to configure how Maesh interprets them.</p>
 <h4 id="traffic-type">Traffic type<a class="headerlink" href="#traffic-type" title="Permanent link">&para;</a></h4>
-<p>Annotations on services are the main way to configure Maesh behavior.</p>
-<p>The service mode can be enabled by using the following annotation:</p>
+<p>The traffic type can be configured by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/traffic-type: "http"</code></pre>
 
 <p>This annotation can be set to either <code>http</code> or <code>tcp</code>, and will specify the mode for that service operation.
@@ -722,7 +768,7 @@ maesh.containo.us/ratelimit-burst: "200"</code></pre>
 <p>These annotation sets average and burst requests per second limit for the service.
 Please note that this value is a string, and needs to be quoted.</p>
 <p>Further details about the rate limiting can be found <a href="https://docs.traefik.io/v2.0/middlewares/ratelimit/#configuration-options">here</a>.</p>
-<h3 id="with-service-mesh-interface">With Service Mesh Interface<a class="headerlink" href="#with-service-mesh-interface" title="Permanent link">&para;</a></h3>
+<h3 id="service-mesh-interface">Service Mesh Interface<a class="headerlink" href="#service-mesh-interface" title="Permanent link">&para;</a></h3>
 <h4 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h4>
 <p>The first step is to describe what the traffic of our server application looks like.</p>
 <pre class="highlight"><code class="language-yaml">---
@@ -774,11 +820,11 @@ sources:
 <p>More information can be found <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md">in the SMI specification</a>.</p>
 <h4 id="traffic-splitting">Traffic Splitting<a class="headerlink" href="#traffic-splitting" title="Permanent link">&para;</a></h4>
 <p>SMI defines the <code>TrafficSplit</code> resource which allows to direct subsets of the traffic to different services.</p>
-<pre class="highlight"><code class="language-yaml">apiVersion: split.smi-spec.io/v1alpha1
+<pre class="highlight"><code class="language-yaml">apiVersion: split.smi-spec.io/v1alpha2
 kind: TrafficSplit
 metadata:
   name: server-split
-  namespace server
+  namespace: server
 spec:
   service: server
   backends:

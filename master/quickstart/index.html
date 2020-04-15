@@ -563,7 +563,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 
                 <h1 id="quickstart">Quickstart<a class="headerlink" href="#quickstart" title="Permanent link">&para;</a></h1>
 <p>Maesh can be installed in your cluster without affecting any running services.
-It will safely install itself via the helm chart, and will be ready for use immediately after.</p>
+It can safely be installed using the <a href="https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package">Helm Chart</a>.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Kubernetes 1.11+</li>
@@ -704,7 +704,7 @@ replicaset.apps/server-7c8fd58db5   2         2         2         77s</code></pr
 <p>Take note of the client app pod name (here it's <code>client-7446fdf848-x96fq</code>) and open a new terminal session inside this pod using <code>kubectl exec</code>.</p>
 <pre class="highlight"><code class="language-bash">kubectl -n maesh-test exec -ti client-7446fdf848-x96fq ash</code></pre>
 
-<p>From inside the client container make sure you are able to reach your server using kubernetes DNS service discovery.</p>
+<p>From inside the client container, make sure your server is reachable using the Kubernetes DNS service discovery.</p>
 <div class="superfences-tabs">
 <input name="__tabs_4" type="radio" id="__tab_4_0" checked="checked" />
 <label for="__tab_4_0">Command</label>
