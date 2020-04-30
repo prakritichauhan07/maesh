@@ -750,8 +750,14 @@ The static configuration is configured when the service mesh is installed and is
 <p>The traffic type can be configured by using the following annotation:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/traffic-type: "http"</code></pre>
 
-<p>This annotation can be set to either <code>http</code> or <code>tcp</code>, and will specify the mode for that service operation.
+<p>This annotation can be set to either <code>http</code>, <code>tcp</code> or <code>udp</code> and will specifies the mode for that service operation.
 If this annotation is not present, the mesh service will operate in the default mode specified in the static configuration.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For now, the <code>udp</code> traffic type does not work when ACL mode is enabled. In ACL mode, all traffic is forbidden unless it
+is explicitly allowed with a <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md">TrafficTarget</a> and
+unfortunately the SMI specification does not yet define a <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-specs.md">Traffic Spec</a> for <code>UDP</code>.</p>
+</div>
 <h4 id="scheme">Scheme<a class="headerlink" href="#scheme" title="Permanent link">&para;</a></h4>
 <p>The scheme used to define custom scheme for request:</p>
 <pre class="highlight"><code class="language-yaml">maesh.containo.us/scheme: "h2c"</code></pre>
