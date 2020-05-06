@@ -375,15 +375,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smi-mode" class="md-nav__link">
-    SMI Mode
+  <a href="#image-version" class="md-nav__link">
+    Image version
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#docker-image-version" class="md-nav__link">
-    Docker image version
+  <a href="#log-level" class="md-nav__link">
+    Log Level
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smi-mode" class="md-nav__link">
+    SMI Mode
   </a>
   
 </li>
@@ -534,15 +541,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smi-mode" class="md-nav__link">
-    SMI Mode
+  <a href="#image-version" class="md-nav__link">
+    Image version
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#docker-image-version" class="md-nav__link">
-    Docker image version
+  <a href="#log-level" class="md-nav__link">
+    Log Level
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smi-mode" class="md-nav__link">
+    SMI Mode
   </a>
   
 </li>
@@ -574,13 +588,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <h1 id="migrations">Migrations<a class="headerlink" href="#migrations" title="Permanent link">&para;</a></h1>
 <p class="subtitle">Helm Chart</p>
 <h2 id="v1x-to-v20">v1.x to v2.0<a class="headerlink" href="#v1x-to-v20" title="Permanent link">&para;</a></h2>
-<h3 id="smi-mode">SMI Mode<a class="headerlink" href="#smi-mode" title="Permanent link">&para;</a></h3>
-<p>The <code>smi.enable</code> Helm option has been deprecated and removed. You should use the new and backward compatible ACL mode 
-option as described in the <a href="../../install/#access-control-list">documentation</a>. </p>
-<h3 id="docker-image-version">Docker image version<a class="headerlink" href="#docker-image-version" title="Permanent link">&para;</a></h3>
+<h3 id="image-version">Image version<a class="headerlink" href="#image-version" title="Permanent link">&para;</a></h3>
 <p>Since version <code>v1.2</code>, Maesh uses <a href="https://github.com/containous/traefik/">Traefik</a> as a library and does not rely on its 
-Docker image anymore. Therefore, the <code>controller.image</code> and <code>mesh.image</code> Helm options have been removed. You should use 
-the new <code>image</code> option as described in the <a href="../../install/#deploy-helm-chart">documentation</a>.    </p>
+Docker image anymore. Therefore, the <code>controller.image</code> and <code>mesh.image</code> options have been removed. You should use the 
+new <code>image</code> option as described in the <a href="../../install/#deploy-helm-chart">documentation</a>.    </p>
+<h3 id="log-level">Log Level<a class="headerlink" href="#log-level" title="Permanent link">&para;</a></h3>
+<p>The <code>controller.logging.debug</code> and <code>mesh.logging</code> options have been removed. You should use the new <code>controller.logLevel</code> 
+and <code>mesh.logLevel</code> options to configure the logging level for the controller and proxies.</p>
+<h3 id="smi-mode">SMI Mode<a class="headerlink" href="#smi-mode" title="Permanent link">&para;</a></h3>
+<p>The <code>smi.enable</code> option has been deprecated and removed. You should use the new and backward compatible ACL mode 
+option as described in the <a href="../../install/#access-control-list">documentation</a>. </p>
                 
                   
                 
