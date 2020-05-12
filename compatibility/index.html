@@ -40,7 +40,7 @@
     
     
       
-        <title>API - Maesh</title>
+        <title>Compatibility - Maesh</title>
       
     
     
@@ -98,7 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#api" tabindex="1" class="md-skip">
+      <a href="#compatibility" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -124,7 +124,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </span>
             <span class="md-header-nav__topic">
               
-                API
+                Compatibility
               
             </span>
           
@@ -281,11 +281,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../compatibility/" title="Compatibility" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Compatibility
+      </label>
+    
+    <a href="./" title="Compatibility" class="md-nav__link md-nav__link--active">
       Compatibility
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-by-features" class="md-nav__link">
+    Compatibility by Features
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -305,70 +343,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        API
-      </label>
-    
-    <a href="./" title="API" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../api/" title="API" class="md-nav__link">
       API
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#apiconfigurationcurrent" class="md-nav__link">
-    /api/configuration/current
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusnodes" class="md-nav__link">
-    /api/status/nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusnodemaesh-pod-nameconfiguration" class="md-nav__link">
-    /api/status/node/{maesh-pod-name}/configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusreadiness" class="md-nav__link">
-    /api/status/readiness
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -537,29 +516,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#apiconfigurationcurrent" class="md-nav__link">
-    /api/configuration/current
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusnodes" class="md-nav__link">
-    /api/status/nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusnodemaesh-pod-nameconfiguration" class="md-nav__link">
-    /api/status/node/{maesh-pod-name}/configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apistatusreadiness" class="md-nav__link">
-    /api/status/readiness
+  <a href="#compatibility-by-features" class="md-nav__link">
+    Compatibility by Features
   </a>
   
 </li>
@@ -580,30 +538,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/containous/maesh/edit/v1.2/docs/content/api.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/containous/maesh/edit/v1.2/docs/content/compatibility.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
-<p>Maesh includes a built-in API that can be used for debugging purposes.
-This can be useful when Maesh is not working as intended.
-The API is accessed via the controller pod, and for security reasons is not exposed via service.
-The API can be accessed by making a <code>GET</code> request to <code>http://&lt;control pod IP&gt;:9000</code> combined with one of the following paths:</p>
-<h2 id="apiconfigurationcurrent"><code>/api/configuration/current</code><a class="headerlink" href="#apiconfigurationcurrent" title="Permanent link">&para;</a></h2>
-<p>This endpoint provides raw json of the current configuration built by the controller.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This may change on each request, as it is a live data structure.</p>
-</div>
-<h2 id="apistatusnodes"><code>/api/status/nodes</code><a class="headerlink" href="#apistatusnodes" title="Permanent link">&para;</a></h2>
-<p>This endpoint provides a json array containing some details about the readiness of the Maesh nodes visible by the controller
-This endpoint will still return a 200 if there are no visible nodes.</p>
-<h2 id="apistatusnodemaesh-pod-nameconfiguration"><code>/api/status/node/{maesh-pod-name}/configuration</code><a class="headerlink" href="#apistatusnodemaesh-pod-nameconfiguration" title="Permanent link">&para;</a></h2>
-<p>This endpoint provides raw json of the current configuration on the Maesh node with the pod name given in <code>{maesh-pod-name}</code>.
-This endpoint provides a 404 response if the pod cannot be found, or other non-200 status codes on other errors.
-If errors are encountered, the error will be returned in the body, and logged on the controller.</p>
-<h2 id="apistatusreadiness"><code>/api/status/readiness</code><a class="headerlink" href="#apistatusreadiness" title="Permanent link">&para;</a></h2>
-<p>This endpoint returns a 200 response if the controller successfully deployed a configuration to all Maesh nodes, and Maesh 
-is ready for use. Otherwise, it will return a 500.</p>
+                <h1 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h1>
+<p>Maesh supports <a href="https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions">similiar to Kubernetes</a> at least the latest 3 minor versions of Kubernetes, therefore currently:</p>
+<ul>
+<li>1.16</li>
+<li>1.17</li>
+<li>1.18</li>
+</ul>
+<p>General functionality can not be guaranted for versions older than that. However, we expect it to work with Kubernetes down to 1.11 currently.</p>
+<h2 id="compatibility-by-features">Compatibility by Features<a class="headerlink" href="#compatibility-by-features" title="Permanent link">&para;</a></h2>
+<p>Some of Maesh's features are only supported on certain Kubernetes versions. Please see the table below.</p>
+<table>
+<thead>
+<tr>
+<th>Features</th>
+<th>K8s 1.16</th>
+<th>K8s 1.17</th>
+<th>K8s 1.18</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>General functionality</td>
+<td>✔</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+<tr>
+<td>Service Topology</td>
+<td>✘</td>
+<td>✔</td>
+<td>✔</td>
+</tr>
+</tbody>
+</table>
                 
                   
                 
