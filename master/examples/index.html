@@ -783,7 +783,7 @@ X-Forwarded-For: 3.4.5.6</code></pre></div>
 </div>
 <h2 id="acl-example">ACL Example<a class="headerlink" href="#acl-example" title="Permanent link">&para;</a></h2>
 <p>The <a href="../install/#access-control-list">ACL mode</a> can be enabled when installing Maesh. Once activated, all traffic is forbidden unless explicitly authorized
-using the SMI <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/traffic-access-control.md#traffictarget-v1alpha1">TrafficTarget</a> resource. This example will present the configuration required to allow the client
+using the SMI <a href="https://github.com/servicemeshinterface/smi-spec/blob/master/apis/traffic-access/v1alpha1/traffic-access.md#traffictarget">TrafficTarget</a> resource. This example will present the configuration required to allow the client
 pod to send traffic to the HTTP and TCP services defined in the previous example.</p>
 <p>Each <code>TrafficTarget</code> defines that a set of source <code>ServiceAccount</code> is capable of sending traffic to a destination <code>ServiceAccount</code>. To authorize the <code>whoami-client</code> pod to send traffic to <code>whoami.whoami.maesh</code>, we need to
 explicitly allow it to hit the pods exposed by the <code>whoami</code> service. </p>
