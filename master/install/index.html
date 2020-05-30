@@ -671,8 +671,6 @@ Installing from source is intended for development/contributing.</p>
 
 <p>You will then be able to use the tagged image as your image in your <code>values.yaml</code> file.</p>
 <h3 id="deploy-helm-chart">Deploy Helm Chart<a class="headerlink" href="#deploy-helm-chart" title="Permanent link">&para;</a></h3>
-<details class="note"><summary>Helm V3</summary><p>Please keep in mind, that our current Helm Chart (v1.1.0) is v3 compatible only.</p>
-</details>
 <p>To deploy the Helm Chart, run:</p>
 <pre class="highlight"><code class="language-shell">helm install maesh helm/chart/maesh --set image.pullPolicy=IfNotPresent --set image.tag=latest</code></pre>
 
