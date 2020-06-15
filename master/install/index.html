@@ -679,7 +679,7 @@ Installing from source is intended for development/contributing.</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set kubedns=true</code></pre>
 
 <p>With this parameter Maesh will install a CoreDNS as a daemonset.
-KubeDNS will be patched with <a href="https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#example-stub-domain">stubDomains</a>.</p>
+KubeDNS will be patched with <a href="https://v1-17.docs.kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#example-stub-domain">stubDomains</a>.</p>
 <h2 id="custom-cluster-domain">Custom cluster domain<a class="headerlink" href="#custom-cluster-domain" title="Permanent link">&para;</a></h2>
 <p>If you use a cluster domain other than <code>cluster.local</code> set it by using the <code>clusterDomain</code> parameter:</p>
 <pre class="highlight"><code class="language-bash">helm install maesh maesh/maesh --set clusterDomain=my.custom.domain.com</code></pre>
