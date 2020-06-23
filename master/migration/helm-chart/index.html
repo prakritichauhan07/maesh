@@ -427,6 +427,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prometheus-and-grafana-services" class="md-nav__link">
+    Prometheus and Grafana services
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -613,6 +620,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#prometheus-and-grafana-services" class="md-nav__link">
+    Prometheus and Grafana services
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -654,6 +668,10 @@ option as described in the <a href="../../install/#access-control-list">document
 <h3 id="default-mode">Default Mode<a class="headerlink" href="#default-mode" title="Permanent link">&para;</a></h3>
 <p>The <code>controller.mesh.defaultMode</code> option has been deprecated and will be removed in a future major release.
 You should use the new <code>defaultMode</code> option to configure the default traffic mode for Maesh services.</p>
+<h3 id="prometheus-and-grafana-services">Prometheus and Grafana services<a class="headerlink" href="#prometheus-and-grafana-services" title="Permanent link">&para;</a></h3>
+<p>Prior to version <code>v2.1</code>, when the Metrics chart is deployed, Prometheus and Grafana services are exposed by default through 
+a <code>NodePort</code>. For security reasons, those services are not exposed by default anymore. To expose them you should use the 
+new <code>prometheus.service</code> and <code>grafana.service</code> options, more details in the corresponding <a href="https://github.com/containous/maesh/blob/e59b861ac91261b950663410a6223a02fc7e2290/helm/chart/maesh/charts/metrics/values.yaml">values.yaml</a>.</p>
                 
                   
                 
