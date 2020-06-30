@@ -26,7 +26,8 @@ jobs:
       env: STABLE=true
     - go: 1.14
       arch: arm64
-      env: STABLE=true  
+      env: STABLE=true
+      install: sudo apt-get install -y curl ruby
 
 env:
   global:
@@ -44,7 +45,6 @@ install:
   - git diff --exit-code go.mod
   - git diff --exit-code go.sum
   - go mod download
-  - sudo apt-get install -y curl ruby
 
 before_deploy:
   - >
