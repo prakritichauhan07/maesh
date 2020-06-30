@@ -4,9 +4,6 @@ go:
   - 1.14
 
 os: linux
-arch:
-  - amd64
-  - arm64
 dist: xenial
 
 git:
@@ -25,7 +22,11 @@ jobs:
   fast_finish: true
   include:
     - go: 1.14
+      arch: amd64
       env: STABLE=true
+    - go: 1.14
+      arch: arm64
+      env: STABLE=true  
 
 env:
   global:
