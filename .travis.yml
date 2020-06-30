@@ -44,7 +44,7 @@ install:
   - git diff --exit-code go.mod
   - git diff --exit-code go.sum
   - go mod download
-  - sudo apt-get install -y libcurl-dev ruby
+  - sudo apt-get install -y curl ruby
 
 before_deploy:
   - >
